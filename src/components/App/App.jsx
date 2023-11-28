@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-
+import { useSelector, useDispatch } from 'react-redux';
+import AirlineForm from './AirlineForm';
 function App() {
+
+  const airlineName = useSelector((store) => store.airlineName);
+  const planeNumber = useSelector((store) => store.planeNumber);
 
   return (
     <div>
-      <h1>Redux Airport</h1>
-      <input placeholder='Airline Name' />
-      <button>Add Airline</button>
-      <table>{/* Airlines should be listed here */}</table>
+      <AirlineForm />
+      <ul>{
+        airlineName.map((name) => {
+          return <li>{(name)}</li>
+        })  
+      }</ul>
     </div>
   );
 }
